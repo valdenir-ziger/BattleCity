@@ -24,7 +24,7 @@ public class GamePanel extends JFrame implements KeyListener{
 		
 		setFocusable(true);
 		board = new Board(m);
-		board.setSize(14*60,14*60);
+		board.setSize(800, 640);
 		board.setLocation((d.width-w)/2,(d.height-h)/2-150);
 		board.setBackground(Color.BLACK);
 		add(board);

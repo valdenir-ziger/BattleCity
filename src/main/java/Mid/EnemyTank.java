@@ -36,7 +36,7 @@ public class EnemyTank extends JLabel implements Runnable {
 		this.x = x;
 		this.board = board;
 		bombVector = new Vector<Bomb>();
-		loadImage("tank");
+		loadImage("src/main/java/tank");
 	}
 
 	public void loadImage(String img) {
@@ -45,22 +45,22 @@ public class EnemyTank extends JLabel implements Runnable {
 	}
 
 	public void goRight() {
-		loadImage("R");
+		loadImage("src/main/java/R");
 		x += 1;
 	}
 
 	public void goLeft() {
-		loadImage("L");
+		loadImage("src/main/java/L");
 		x -= 1;
 	}
 
 	public void goUp() {
-		loadImage("U");
+		loadImage("src/main/java/U");
 		y -= 1;
 	}
 
 	public void goDown() {
-		loadImage("D");
+		loadImage("src/main/java/D");
 		y += 1;
 	}
 	

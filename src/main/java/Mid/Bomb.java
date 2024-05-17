@@ -25,19 +25,19 @@ public class Bomb extends Thread{
 	}
 	
 	public void goRight(){
-		loadImage("RM");
+		loadImage("src/main/java/RM");
 	}
 
 	public void goLeft(){
-		loadImage("LM");
+		loadImage("src/main/java/LM");
 	}
 
 	public void goUp(){
-		loadImage("UM");
+		loadImage("src/main/java/UM");
 	}
 
 	public void goDown(){
-		loadImage("DM"); 
+		loadImage("src/main/java/DM"); 
 	}
 	
 	public void run(){

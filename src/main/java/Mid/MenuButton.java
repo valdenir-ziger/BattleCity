@@ -7,8 +7,6 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import Mid.Massages;
-import Mid.BombEvent;
 
 @SuppressWarnings("serial")
 public class MenuButton extends JButton implements ActionListener, KeyListener{
@@ -38,7 +36,7 @@ public class MenuButton extends JButton implements ActionListener, KeyListener{
 			}
 			else{
 				m.setNumOfTanks(Integer.parseInt(m.getTanksNumber()));
-				m.dispatchEvent(new BombEvent(this, Massages.PLAY, 800, 600));	
+				m.dispatchEvent(new BombEvent(this, Massages.PLAY, 800, 640));	
 			}
 		}
 		
@@ -61,7 +59,7 @@ public class MenuButton extends JButton implements ActionListener, KeyListener{
 				}
 				else{
 					m.setNumOfTanks(Integer.parseInt(m.getTanksNumber()));
-					m.dispatchEvent(new BombEvent(this, Massages.PLAY, 800, 600));	
+					m.dispatchEvent(new BombEvent(this, Massages.PLAY, 800, 640));	
 				}
 			}
 		}

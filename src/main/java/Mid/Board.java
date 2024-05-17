@@ -31,14 +31,14 @@ public class Board extends JPanel implements Runnable{
 	private boolean oneTime = false;
 	private Vector <Bomb> bombVector;
 	private Random random = new Random();
-	private int [][] b = new int [14][14];
+	private int [][] b = new int[14][14];
 	private Vector <Bomb> enemyBombVector;
 	private Image [] bombImage = new Image[4];
 	private final Image [] img = new Image[2];
 	private Vector <Rectangle> bombRectVector;
 	private Vector <EnemyTank> enemyTankVector;
 	private Vector <Rectangle> blockRectVector;
-	private File mapFile = new File("map.txt");
+	private File mapFile = new File("src/main/java/map.txt");
 	private Vector <Rectangle> enemyTankRectVector;
 	private Vector <Rectangle> enemyTankRectVectorTemp;
 	
@@ -52,16 +52,16 @@ public class Board extends JPanel implements Runnable{
 		enemyTankRectVector = new Vector <Rectangle>();
 		enemyTankRectVectorTemp = new Vector<Rectangle>();
 		
-		img[0]= new ImageIcon("black.png").getImage();
-		img[1]= new ImageIcon("red.png").getImage();
+		img[0]= new ImageIcon("src/main/java/black.png").getImage();
+		img[1]= new ImageIcon("src/main/java/red.png").getImage();
 
-		bombImage[0] = new ImageIcon("RM.png").getImage();
-		bombImage[1] = new ImageIcon("LM.png").getImage();
-		bombImage[2] = new ImageIcon("UM.png").getImage();
-		bombImage[3] = new ImageIcon("DM.png").getImage();
+		bombImage[0] = new ImageIcon("src/main/java/RM.png").getImage();
+		bombImage[1] = new ImageIcon("src/main/java/LM.png").getImage();
+		bombImage[2] = new ImageIcon("src/main/java/UM.png").getImage();
+		bombImage[3] = new ImageIcon("src/main/java/DM.png").getImage();
 		
 		dir = 4;
-		setSize(60*14,60*14);
+		setSize(800, 640);
 		setLayout(null);
 		
 		t = new Tank(0, 0, this);
@@ -79,7 +79,13 @@ public class Board extends JPanel implements Runnable{
 				e.printStackTrace();
 			}
 			for(int j=0;j<14;j++){
-				b[i][j]=bByte[j]-48;
+                            if (bByte[j] == 48){
+                                b[i][j]= 0;
+                            }
+                            else{
+                                b[i][j]= 1;
+                            }
+				//b[i][j]=bByte[j]-48;
 			}
 		}
 		
@@ -127,8 +133,11 @@ public class Board extends JPanel implements Runnable{
 	public void paint(Graphics g){
 		super.paint(g);
 
-		for (int i = 0; i < 14; i++) {
-			for (int j = 0; j < 14; j++) {
+                //gera a parte do fundo
+                // tamanho de 13 x 10 quadrados na tela que é o espaço reservado na tela
+                // pros tanks percorer
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 13; j++) {
 				g.drawImage(img[b[i][j]], j*60, i*60, null);
 				if(b[i][j] == 1 && !oneTime){
 					blockRectVector.add(new Rectangle(j*60, i*60, 60, 60));

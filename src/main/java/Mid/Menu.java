@@ -19,8 +19,7 @@ import javax.swing.JTextField;
 public class Menu extends JDialog implements ActionListener{
 
 	private JLabel name;
-	private Image logoo;
-	private Image logooo;
+	private Image logoMaior;
 	private ImageIcon logo;
 	private int numOfTanks;
 	private String playerName;
@@ -38,6 +37,7 @@ public class Menu extends JDialog implements ActionListener{
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setLayout(null);
+                setResizable(false);
 		
 		name = new JLabel("Name: ");
 		name.setSize(100,25);
@@ -45,6 +45,7 @@ public class Menu extends JDialog implements ActionListener{
 		getContentPane().add(name);
 		
 		nameField = new JTextField();
+                nameField.setText("Player 1");
 		nameField.setSize(80, 25);
 		nameField.setLocation(180,20);
 		nameField.addFocusListener(new FocusListener() {
@@ -68,6 +69,7 @@ public class Menu extends JDialog implements ActionListener{
 		getContentPane().add(tankNumber);
 		
 		tankNumberField = new JTextField();
+                tankNumberField.setText("1");
 		tankNumberField.setSize(80, 25);
 		tankNumberField.setLocation(180,50);
 		tanksNumber = tankNumberField.getText();
@@ -83,7 +85,7 @@ public class Menu extends JDialog implements ActionListener{
 		});
 		getContentPane().add(tankNumberField);
 
-		chooseDifficualty = new JLabel("Difficualty: ");
+		chooseDifficualty = new JLabel("Difficulty: ");
 		chooseDifficualty.setSize(100,25);
 		chooseDifficualty.setLocation(50, 80);
 		getContentPane().add(chooseDifficualty);
@@ -92,7 +94,7 @@ public class Menu extends JDialog implements ActionListener{
 		difficualty.setSize(80, 25);
 		difficualty.setLocation(180,80);
 		difficualty.addItem("Easy");
-		difficualty.addItem("Meduim");
+		difficualty.addItem("Medium");
 		difficualty.addItem("Hard");
 		difficualty.addFocusListener(new FocusListener() {
 			@Override
@@ -105,9 +107,9 @@ public class Menu extends JDialog implements ActionListener{
 			}
 		});
 		getContentPane().add(difficualty);
-		logo = new ImageIcon("logo.png");
-		logoo = logo.getImage();
-		logooo = logoo.getScaledInstance(150, 100, Image.SCALE_DEFAULT);
+		logo = new ImageIcon("src/main/java/logo.png");
+		logoMaior = logo.getImage();
+		// logoMenor = logo.getImage().getScaledInstance(150, 100, Image.SCALE_DEFAULT);
 		
 		startButton = new MenuButton("Start", this);
 		startButton.setSize(80,25);
@@ -137,8 +139,8 @@ public class Menu extends JDialog implements ActionListener{
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
-		g.drawImage(logoo, 15, 200, null);
-		g.drawImage(logooo, 50, 50, null);
+		//g.drawImage(logoMenor, 275, 40, null);//menor
+                g.drawImage(logoMaior, 15, 200, null);//Maior
 	}
 	
 	
@@ -165,7 +167,7 @@ public class Menu extends JDialog implements ActionListener{
 	@Override
 	protected void processEvent(AWTEvent arg0) {
 		if(arg0.getID() == Massages.PLAY){
-			new GamePanel(60*14, 60*14, this);
+			new GamePanel(800, 640, this);
 		}	
 		super.processEvent(arg0);
 	}

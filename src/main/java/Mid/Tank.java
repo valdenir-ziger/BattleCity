@@ -12,7 +12,7 @@ public class Tank extends JLabel {
 	public Tank(int x, int y, Board board){
 		this.y = y;
 		this.x = x;
-		loadImage("tank");
+		loadImage("src/main/java/tank");
 		x = 0;
 		y = 0;
 	}
@@ -24,28 +24,28 @@ public class Tank extends JLabel {
 	
 	public void goRight(){
 		if(x < 765){
-			loadImage("R");
+			loadImage("src/main/java/R");
 			x+=6;
 		}
 	}
 
 	public void goLeft(){
 		if(x>0){
-			loadImage("L");
+			loadImage("src/main/java/L");
 			x-=6;	
 		}
 	}
 
 	public void goUp(){
 		if(y>0){
-			loadImage("U"); 
+			loadImage("src/main/java/U"); 
 			y-=6;	
 		}
 	}
 
 	public void goDown(){
 		if(y<730){
-			loadImage("D"); 
+			loadImage("src/main/java/D"); 
 			y+=6;	
 		}
 	}
