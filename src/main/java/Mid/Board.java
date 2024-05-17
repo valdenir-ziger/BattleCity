@@ -100,23 +100,8 @@ public class Board extends JPanel implements Runnable{
 		for (int i = 0; i < m.getNumOfTanks(); i++) {
 			int x = random.nextInt(60*13) + 1;
 			int y = random.nextInt(60*13) + 1;
-			Rectangle temp = new Rectangle(x, y, 80, 80);
-			for (int j = 0; j < blockRectVector.size(); j++) {
-				while (blockRectVector.get(j).intersects(temp)) {
-					x = random.nextInt(60*13) + 1;
-					y = random.nextInt(60*13) + 1;
-					temp = new Rectangle(x, y, 80, 80);					
-				}
-			}
-			Rectangle temprect = new Rectangle(x, y, 80, 80);
-			
-			for (int j = 0; j < tr.size(); j++) {
-				while(tr.get(j).intersects(temprect)){
-					x = random.nextInt(60*13) + 1;
-					y = random.nextInt(60*13) + 1;
-					temprect = new Rectangle(x, y, 80, 80);	
-				}
-			}
+			Rectangle temp     = this.getRetangulo(blockRectVector);
+			Rectangle temprect = this.getRetangulo(tr);
 			tr.add(temprect);
 			EnemyTank etTemp = new EnemyTank(x, y, this);			
 			enemyTankVector.add(etTemp);
@@ -127,6 +112,20 @@ public class Board extends JPanel implements Runnable{
 		setVisible(true);
 		Thread th = new Thread(this);
 		th.start();
+	}
+        
+        private Rectangle getRetangulo(Vector <Rectangle> blockRectVector) {
+            int x = random.nextInt(60*13) + 1;
+	    int y = random.nextInt(60*13) + 1;
+            Rectangle temp = new Rectangle(x, y, 80, 80);
+            for (int j = 0; j < blockRectVector.size(); j++) {
+                    while (blockRectVector.get(j).intersects(temp)) {
+                            x = random.nextInt(60*13) + 1;
+                            y = random.nextInt(60*13) + 1;
+                            temp = new Rectangle(x, y, 80, 80);					
+                    }
+            }
+            return temp;
 	}
 	
 	@Override
