@@ -14,22 +14,32 @@ public class GamePanel extends JFrame implements KeyListener{
 	private int w;
 	private int h;
 	private Board board;
+        private Dimension d;
 	public GamePanel(int w, int h, Menu m) {
+                this.setW(w);
+                this.setH(h);
+                this.setupJFrame(m);
+                this.setupBoard(m);
+		addKeyListener(this);
+		setVisible(true);
+	}
+
+	private void setupJFrame(Menu m){
 		setTitle(m.getPlayerName() +"'s game");
-		Dimension d=Toolkit.getDefaultToolkit().getScreenSize();
+		this.d =Toolkit.getDefaultToolkit().getScreenSize();
 		setSize(w, h);
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		
 		setFocusable(true);
+	}
+
+	private void setupBoard(Menu m){
 		board = new Board(m);
 		board.setSize(800, 640);
 		board.setLocation((d.width-w)/2,(d.height-h)/2-150);
 		board.setBackground(Color.BLACK);
 		add(board);
-		addKeyListener(this);
-		setVisible(true);
 	}
 	
 	public int getW() {

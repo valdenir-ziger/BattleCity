@@ -8,6 +8,9 @@ import javax.swing.JLabel;
 public class Tank extends JLabel {
 	private int x,y;
 	private Image tank;
+	private static final int STEP_SIZE = 6;
+	private static final int MAX_X = 765;
+	private static final int MAX_Y = 730;
 
 	public Tank(int x, int y, Board board){
 		this.y = y;
@@ -23,30 +26,30 @@ public class Tank extends JLabel {
 	}
 	
 	public void goRight(){
-		if(x < 765){
+		if(x < MAX_X){
 			loadImage("src/main/java/R");
-			x+=6;
+			x+=STEP_SIZE;
 		}
 	}
 
 	public void goLeft(){
 		if(x>0){
 			loadImage("src/main/java/L");
-			x-=6;	
+			x-=STEP_SIZE;	
 		}
 	}
 
 	public void goUp(){
 		if(y>0){
 			loadImage("src/main/java/U"); 
-			y-=6;	
+			y-=STEP_SIZE;	
 		}
 	}
 
 	public void goDown(){
-		if(y<730){
+		if(y<MAX_Y){
 			loadImage("src/main/java/D"); 
-			y+=6;	
+			y+=STEP_SIZE;	
 		}
 	}
 	public Image getTank() {
