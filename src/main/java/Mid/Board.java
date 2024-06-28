@@ -100,7 +100,7 @@ public class Board extends JPanel implements Runnable{
 		for (int i = 0; i < m.getNumOfTanks(); i++) {
 			int x = random.nextInt(60*13) + 1;
 			int y = random.nextInt(60*13) + 1;
-			Rectangle temp     = this.getRetangulo(blockRectVector);
+			// Rectangle temp     = this.getRetangulo(blockRectVector);
 			Rectangle temprect = this.getRetangulo(tr);
 			tr.add(temprect);
 			EnemyTank etTemp = new EnemyTank(x, y, this);			

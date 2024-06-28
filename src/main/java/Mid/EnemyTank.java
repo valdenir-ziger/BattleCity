@@ -19,6 +19,8 @@ public class EnemyTank extends JLabel implements Runnable {
 	private Vector<Bomb> bombVector;
 	private int dir = 1;
 	private boolean MyTankAccident = false;
+	private static final int MAX_X = 600;
+	private static final int MAX_Y = 540;
 
 	public boolean isMyTankAccidemt() {
 		return MyTankAccident;
@@ -46,22 +48,34 @@ public class EnemyTank extends JLabel implements Runnable {
 
 	public void goRight() {
 		loadImage("src/main/java/R");
-		x += 1;
+                if (x <= MAX_X) {
+                    x += 1;
+                }
+                else{
+                    x = MAX_X;
+                    goLeft();
+                }
 	}
 
 	public void goLeft() {
 		loadImage("src/main/java/L");
-		x -= 1;
+                x -= 1;
 	}
 
 	public void goUp() {
 		loadImage("src/main/java/U");
-		y -= 1;
+                y -= 1;
 	}
 
 	public void goDown() {
 		loadImage("src/main/java/D");
-		y += 1;
+                if (y <= MAX_Y) {
+                    y += 1;
+                }
+                else{
+                    y = MAX_Y;
+                    goUp();
+                }
 	}
 	
 	public Vector<Bomb> getBombVector() {
@@ -125,7 +139,7 @@ public class EnemyTank extends JLabel implements Runnable {
 		case 1:
 			a.x +=2;
 			if(board.checkIntersects(a)){
-				a.x -= 2;
+				a.x -= 4;
 				return true;
 			}
 			break;
@@ -133,21 +147,21 @@ public class EnemyTank extends JLabel implements Runnable {
 		case 2:
 			a.x -=2;
 			if(board.checkIntersects(a)){
-				a.x += 2;
+				a.x += 4;
 				return true;
 			}
 			break;
 		case 3:
 			a.y -=2;
 			if(board.checkIntersects(a)){
-				a.x += 2;
+				a.x += 4;
 				return true;
 			}
 			break;
 		case 4:
 			a.y +=2;
 			if(board.checkIntersects(a)){
-				a.y -= 2;
+				a.y -= 4;
 				return true;
 			}
 			break;
@@ -192,7 +206,7 @@ public class EnemyTank extends JLabel implements Runnable {
 					goRight();
 					EnemyTankRect = new Rectangle(getX(), getY(), 80, 80);
 					try{
-						if (x > 760 || chance == 1)
+						if (x > MAX_X || chance == 1)
 							dir = changeDir(dir);
 						else if(blockCheck(dir, EnemyTankRect)){
 							dir = changeDir(dir);
@@ -205,8 +219,8 @@ public class EnemyTank extends JLabel implements Runnable {
 						}
 					}
 					finally{
-						accident = false;
-						MyTankAccident = false;
+						this.accident = false;
+						this.MyTankAccident = false;
 					}	
 				}
 				break;
@@ -238,8 +252,8 @@ public class EnemyTank extends JLabel implements Runnable {
 						}
 					}
 					finally{
-						accident = false;
-						MyTankAccident = false;
+						this.accident = false;
+						this.MyTankAccident = false;
 					}
 				}
 				
@@ -272,8 +286,8 @@ public class EnemyTank extends JLabel implements Runnable {
 						}
 					}
 					finally{
-						accident = false;
-						MyTankAccident = false;
+						this.accident = false;
+						this.MyTankAccident = false;
 					}
 				}
 				break;
@@ -290,7 +304,7 @@ public class EnemyTank extends JLabel implements Runnable {
 					EnemyTankRect = new Rectangle(getX(), getY(), 80, 80);
 					
 					try{
-						if (y > 730 || chance == 1)
+						if (y > MAX_Y || chance == 1)
 							dir = changeDir(dir);
 						else if(blockCheck(dir, EnemyTankRect)){
 							dir = changeDir(dir);
@@ -303,8 +317,8 @@ public class EnemyTank extends JLabel implements Runnable {
 						}
 					}
 					finally{
-						accident = false;
-						MyTankAccident = false;
+						this.accident = false;
+						this.MyTankAccident = false;
 					}
 					
 				}

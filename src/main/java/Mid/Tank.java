@@ -8,16 +8,16 @@ import javax.swing.JLabel;
 public class Tank extends JLabel {
 	private int x,y;
 	private Image tank;
-	private static final int STEP_SIZE = 6;
-	private static final int MAX_X = 765;
-	private static final int MAX_Y = 730;
+	private static final int STEP_SIZE = 4;
+	private static final int MAX_X = 800;
+	private static final int MAX_Y = 640;
 
 	public Tank(int x, int y, Board board){
 		this.y = y;
 		this.x = x;
 		loadImage("src/main/java/tank");
-		x = 0;
-		y = 0;
+		x = 1;
+		y = 1;
 	}
 	
 	public void loadImage(String img) {
